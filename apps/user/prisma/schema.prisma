@@ -1,0 +1,56 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  createdAt DateTime @default(now())
+  email     String?  @unique
+  firstName String?
+  id        String   @id @default(cuid())
+  lastName  String?
+  password  String
+  roles     Json
+  updatedAt DateTime @updatedAt
+  username  String   @unique
+}
+
+model Project {
+  createdAt      DateTime       @default(now())
+  createdBy      String?
+  description    String?
+  id             String         @id @default(cuid())
+  keywordEntries KeywordEntry[]
+  name           String?
+  updatedAt      DateTime       @updatedAt
+}
+
+model KeywordEntry {
+  createdAt   DateTime @default(now())
+  id          String   @id @default(cuid())
+  keywordText String?
+  project     Project? @relation(fields: [projectId], references: [id])
+  projectId   String?
+  updatedAt   DateTime @updatedAt
+}
+
+model SearchResult {
+  associatedKeyword String?
+  createdAt         DateTime @default(now())
+  id                String   @id @default(cuid())
+  resultContent     String?
+  updatedAt         DateTime @updatedAt
+}
+
+model EditHistory {
+  changeDescription String?
+  createdAt         DateTime  @default(now())
+  editTimestamp     DateTime?
+  id                String    @id @default(cuid())
+  relatedProject    String?
+  updatedAt         DateTime  @updatedAt
+}

@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+                 package searchResult;
+service SearchResultService {
+ rpc createSearchResult (SearchResultCreateInput) returns (SearchResult) {}
+rpc searchResults (findManyParams) returns (stream SearchResult) {}
+rpc searchResult (SearchResultWhereUniqueInput) returns (SearchResult) {}
+rpc updateSearchResult (SearchResultUpdateInput) returns (SearchResult) {}
+rpc deleteSearchResult (SearchResultWhereUniqueInput) returns (SearchResult) {} 
+ }
+message SearchResultCreateInput {
+string associatedKeyword = 1;
+string createdAt = 2;
+string id = 3;
+string resultContent = 4;
+string updatedAt = 5;
+};
+message SearchResult {
+string associatedKeyword = 1;
+string createdAt = 2;
+string id = 3;
+string resultContent = 4;
+string updatedAt = 5;
+};
+message SearchResultWhereUniqueInput {
+string associatedKeyword = 1;
+string createdAt = 2;
+string id = 3;
+string resultContent = 4;
+string updatedAt = 5;
+};
+message SearchResultUpdateInput {
+string associatedKeyword = 1;
+string createdAt = 2;
+string id = 3;
+string resultContent = 4;
+string updatedAt = 5;
+};
+message findManyParams {
+
+};

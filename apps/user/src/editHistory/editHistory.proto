@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+                 package editHistory;
+service EditHistoryService {
+ rpc createEditHistory (EditHistoryCreateInput) returns (EditHistory) {}
+rpc editHistories (findManyParams) returns (stream EditHistory) {}
+rpc editHistory (EditHistoryWhereUniqueInput) returns (EditHistory) {}
+rpc updateEditHistory (EditHistoryUpdateInput) returns (EditHistory) {}
+rpc deleteEditHistory (EditHistoryWhereUniqueInput) returns (EditHistory) {} 
+ }
+message EditHistoryCreateInput {
+string changeDescription = 1;
+string createdAt = 2;
+string editTimestamp = 3;
+string id = 4;
+string relatedProject = 5;
+string updatedAt = 6;
+};
+message EditHistory {
+string changeDescription = 1;
+string createdAt = 2;
+string editTimestamp = 3;
+string id = 4;
+string relatedProject = 5;
+string updatedAt = 6;
+};
+message EditHistoryWhereUniqueInput {
+string changeDescription = 1;
+string createdAt = 2;
+string editTimestamp = 3;
+string id = 4;
+string relatedProject = 5;
+string updatedAt = 6;
+};
+message EditHistoryUpdateInput {
+string changeDescription = 1;
+string createdAt = 2;
+string editTimestamp = 3;
+string id = 4;
+string relatedProject = 5;
+string updatedAt = 6;
+};
+message findManyParams {
+
+};
