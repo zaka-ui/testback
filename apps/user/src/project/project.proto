@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+                 package project;
+service ProjectService {
+ rpc createProject (ProjectCreateInput) returns (Project) {}
+rpc projects (findManyParams) returns (stream Project) {}
+rpc project (ProjectWhereUniqueInput) returns (Project) {}
+rpc updateProject (ProjectUpdateInput) returns (Project) {}
+rpc deleteProject (ProjectWhereUniqueInput) returns (Project) {}
+rpc findManyProject (ProjectWhereUniqueInput) returns (stream KeywordEntry) {}
+rpc updateProject (KeywordEntryParams) returns (stream KeywordEntry) {}
+rpc connectProject (KeywordEntryParams) returns (KeywordEntry) {}
+rpc disconnectProject (KeywordEntryParams) returns (KeywordEntry) {} 
+ }
+message ProjectCreateInput {
+string createdAt = 1;
+string createdBy = 2;
+string description = 3;
+string id = 4;
+repeated KeywordEntry keywordEntries = 5;
+string name = 6;
+string updatedAt = 7;
+};
+message Project {
+string createdAt = 1;
+string createdBy = 2;
+string description = 3;
+string id = 4;
+repeated KeywordEntry keywordEntries = 5;
+string name = 6;
+string updatedAt = 7;
+};
+message ProjectWhereUniqueInput {
+string createdAt = 1;
+string createdBy = 2;
+string description = 3;
+string id = 4;
+repeated KeywordEntry keywordEntries = 5;
+string name = 6;
+string updatedAt = 7;
+};
+message ProjectUpdateInput {
+string createdAt = 1;
+string createdBy = 2;
+string description = 3;
+string id = 4;
+repeated KeywordEntry keywordEntries = 5;
+string name = 6;
+string updatedAt = 7;
+};
+message findManyParams {
+
+};
+message KeywordEntry {
+string createdAt = 1;
+string id = 2;
+string keywordText = 3;
+string updatedAt = 4;
+};
+message KeywordEntryWhereUniqueInput {
+string createdAt = 1;
+string id = 2;
+string keywordText = 3;
+string updatedAt = 4;
+};
+message KeywordEntryParams {
+ProjectWhereUniqueInput projectWhereUniqueInput = 1;
+KeywordEntryWhereUniqueInput keywordentryWhereUniqueInput = 2;
+};
